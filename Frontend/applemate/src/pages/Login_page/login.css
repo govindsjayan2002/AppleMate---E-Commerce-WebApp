@@ -1,0 +1,138 @@
+/* Outer container with dark background */
+.login_container {
+    display: flex;
+    height: 100vh; /* Full height of the viewport */
+    font-family: 'Arial', sans-serif; /* Clean font */
+    background-color: #2c2c2c; /* Dark background for the entire container */
+}
+
+/* Left side image container */
+.login_image_container { /* Changed class name */
+    flex: 0.6; /* Takes up 60% of the container */
+    display: flex;
+    justify-content: center; /* Center image horizontally */
+    align-items: center; /* Center image vertically */
+    position: relative; /* For potential overlay effects */
+    border-right: 5px solid #007bff; /* Blue border for separation */
+}
+
+.login_image_container img { /* Changed class name */
+    width: 100%; /* Responsive image */
+    height: 100vh; /* Maintain aspect ratio */
+    border-radius: 15px; /* Rounded corners for the image */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+}
+
+/* Centered box for login form */
+.login_box { /* Changed class name */
+    flex: 0.4; /* Takes up 40% of the container */
+    display: flex;
+    justify-content: center; /* Center the box horizontally */
+    align-items: center; /* Center the box vertically */
+}
+
+/* Login form styling inside the box */
+.login_form { /* Changed class name */
+    background-color: rgba(255, 255, 255, 0.9); /* Light shade background for the form */
+    width: 100%; /* Full width of the box */
+    max-width: 400px; /* Limit width of the form for better design */
+    padding: 30px; /* Padding inside the form box */
+    border-radius: 15px; /* Rounded corners for the form box */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7); /* Stronger shadow for depth */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center all elements horizontally inside the form */
+}
+
+/* Title text styling */
+.form_title { /* Changed class name */
+    font-size: 32px; /* Larger font size for emphasis */
+    color: #333; /* Dark text for better contrast */
+    margin-bottom: 20px;
+}
+
+.login_items{
+    gap: 10px;
+}
+
+/* Input elements container styling */
+.input_elements {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center inputs horizontally */
+}
+
+.input_elements div {
+    display: flex;
+    align-items: center; /* Align icons and inputs vertically in each row */
+    justify-content: center; /* Center items horizontally in each row */
+    margin-bottom: 20px; /* Space between input rows */
+}
+
+.input_elements img {
+    width: 25px; /* Icon width */
+    height: 25px; /* Icon height */
+}
+
+.input_elements input {
+    height: 50px; /* Fixed height for input fields */
+    width: calc(100% - 40px); /* Full width minus space for icons and margins */
+    max-width: 320px; /* Max width for input fields to limit size on larger screens */
+    font-size: 18px; /* Increase font size for better readability */
+    border-radius: 5px;
+    border: 1px solid #007bff; /* Blue border for inputs */
+    padding-left: 40px; /* Padding to accommodate icon on left side */
+}
+
+.input_elements input::placeholder {
+   color: #aaa; /* Placeholder color for better visibility against white background */
+}
+
+.input_elements input:focus {
+   border-color:#0056b3 ;/* Change border color on focus*/
+   outline:none ;/* Remove default outline*/
+   box-shadow :0 0 5px rgba(0,123,255,0.5);/* Glow effect on focus*/
+}
+
+/* Submit button styling with hover effect*/
+.submit-container {
+   display:flex ;
+   justify-content:center ;/* Center button horizontally*/
+   margin-top :20px ;/* Space above button*/
+}
+
+.submit {
+   background-color :#007bff ;/* Bootstrap primary color*/
+   color:white ;
+   border:none ;
+   height :50px ;/* Match button height with input fields*/
+   width :160px ;/* Set a fixed width for the button*/
+   font-size :18px ;/* Slightly larger font size*/
+   border-radius :5px ;
+   cursor:pointer ;
+   transition :background-color .3s ,transform .2s ;/* Smooth transition for background color*/
+}
+
+.submit:hover {
+   background-color :#0056b3 ;/* Darker shade on hover*/
+   transform :translateY(-2px) ;/* Slight lift effect on hover*/
+}
+
+/* Links styling below the form*/
+.links {
+   text-align:center ;/* Center the links below the form*/
+   margin-top :20px ;/* Space above links*/
+   font-size :smaller ;/* Smaller font size for links*/
+   color :#333 ;/* Dark text for links to stand out against light background*/
+}
+
+.links a {
+   color :#007bff ;/* Link color*/
+   text-decoration:none ;/* Remove underline from links*/
+   transition :color .3s ;/* Smooth transition for link color*/
+}
+
+.links a:hover {
+   color:#0056b3 ;/* Darker shade on hover*/
+   text-decoration :underline ;/* Underline on hover*/
+}

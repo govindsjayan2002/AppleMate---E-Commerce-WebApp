@@ -1,0 +1,78 @@
+/* General container styling */
+.registration_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+  }
+  
+  /* Form box styling */
+  .registration_box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+  }
+  
+  .registration_box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Input group styling */
+  .input_group {
+    margin-bottom: 15px;
+  }
+  
+  .input_group label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .input_group input,
+  .input_group select,
+  .input_group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  /* Styling for textarea */
+  .input_group textarea {
+    resize: none;
+    height: 60px;
+  }
+  
+  /* Submit button styling */
+  .submit_button {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .submit_button:hover {
+    background-color: #218838;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 500px) {
+    .registration_box {
+      width: 90%;
+      padding: 20px;
+    }
+  }
+  
