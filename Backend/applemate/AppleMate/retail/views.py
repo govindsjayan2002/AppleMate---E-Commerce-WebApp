@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib.auth.models import User
-from .models import RetailSellerProfile, Product, Order
+from .models import RetailSellerProfile, Product, Order, OrderItem
 from .serializers import RetailSellerProfileSerializer, ProductSerializer, OrderSerializer, UserSerializer
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.hashers import make_password,check_password
@@ -195,62 +195,70 @@ class PlaceOrderView(APIView):
 
     def post(self, request):
         try:
-            seller_profile = request.user.retailsellerprofile
-            if not seller_profile.is_approved:
-                return Response({'error': 'You are not an approved retail seller'}, status=status.HTTP_403_FORBIDDEN)
-        except RetailSellerProfile.DoesNotExist:
-            return Response({'error': 'Retail seller profile not found'}, status=status.HTTP_404_NOT_FOUND)
+            data = request.data
+            buyer = get_object_or_404(RetailSellerProfile, user=request.user)
+            shipping_name = data.get("shipping_name")
+            shipping_address = data.get("shipping_address")
+            shipping_phone = data.get("shipping_phone")
+            payment_method = data.get("payment_method")
+            cart_items = data.get("cart_items", [])  # Ensure it's a list
 
-        # Get data from request
-        product_id = request.data.get("product_id")
-        quantity = request.data.get("quantity")
-        shipping_name = request.data.get("shipping_name")
-        shipping_address = request.data.get("shipping_address")
-        shipping_phone = request.data.get("shipping_phone")
-        payment_method = request.data.get("payment_method")
+            if not cart_items:
+                return Response({"error": "Cart is empty"}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Validate required fields
-        if not product_id or not quantity:
-            return Response({'error': 'Product ID and quantity are required'}, status=status.HTTP_400_BAD_REQUEST)
+            total_price = 0
+            order_items = []
 
-        if not shipping_name or not shipping_address or not shipping_phone:
-            return Response({'error': 'Shipping details are required'}, status=status.HTTP_400_BAD_REQUEST)
+            for item in cart_items:
+                product_id = item.get("product_id")  # Ensure product_id is fetched correctly
+                quantity = item.get("quantity")
 
-        if not payment_method:
-            return Response({'error': 'Payment method is required'}, status=status.HTTP_400_BAD_REQUEST)
+                if not product_id or not quantity:
+                    return Response({"error": "Invalid cart item data"}, status=status.HTTP_400_BAD_REQUEST)
 
-        try:
-            quantity = int(quantity)  # Ensure it's an integer
-            if quantity <= 0:
-                return Response({'error': 'Quantity must be greater than zero'}, status=status.HTTP_400_BAD_REQUEST)
-        except ValueError:
-            return Response({'error': 'Invalid quantity format'}, status=status.HTTP_400_BAD_REQUEST)
+                try:
+                    product = Product.objects.get(id=product_id)
+                except Product.DoesNotExist:
+                    logger.error(f"Product with ID {product_id} not found.")
+                    return Response({"error": f"Product with ID {product_id} not found."},
+                                    status=status.HTTP_400_BAD_REQUEST)
 
-        try:
-            product = Product.objects.get(id=product_id)
-        except Product.DoesNotExist:
-            return Response({'error': 'Product not found'}, status=status.HTTP_404_NOT_FOUND)
+                item_total = product.retail_price * quantity
+                total_price += item_total
+                order_items.append({
+                    "product": product,
+                    "quantity": quantity,
+                    "item_price": item_total
+                })
 
-        total_price = product.retail_price * quantity
+            # Create Order
+            order = Order.objects.create(
+                buyer=buyer,
+                total_price=total_price,
+                status="Pending",
+                shipping_name=shipping_name,
+                shipping_address=shipping_address,
+                shipping_phone=shipping_phone,
+                payment_method=payment_method,
+            )
 
-        # Create the order
-        order = Order.objects.create(
-            seller=seller_profile,
-            product=product,
-            quantity=quantity,
-            total_price=total_price,
-            status="Pending",
-            shipping_name=shipping_name,
-            shipping_address=shipping_address,
-            shipping_phone=shipping_phone,
-            payment_method=payment_method
-        )
+            # Create Order Items
+            OrderItem.objects.bulk_create([
+                OrderItem(
+                    order=order,
+                    product=item["product"],
+                    quantity=item["quantity"],
+                    item_price=item["item_price"]
+                ) for item in order_items
+            ])
 
-        return Response({
-            'message': 'Order placed successfully',
-            'order_id': order.id,
-            'total_price': float(total_price)
-        }, status=status.HTTP_201_CREATED)
+            return Response({"message": "Order placed successfully!"}, status=status.HTTP_201_CREATED)
+
+        except Exception as e:
+            logger.error(f"Error placing order: {str(e)}")
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
 #User details fetching
 @login_required
 def user_profile(request):
@@ -468,28 +476,32 @@ class GetOrdersView(APIView):
 
     def get(self, request):
         try:
-            seller_profile = request.user.retailsellerprofile
+            seller_profile = RetailSellerProfile.objects.get(user=request.user)
             if not seller_profile.is_approved:
                 return Response({'error': 'You are not an approved retail seller'}, status=status.HTTP_403_FORBIDDEN)
         except RetailSellerProfile.DoesNotExist:
             return Response({'error': 'Retail seller profile not found'}, status=status.HTTP_404_NOT_FOUND)
 
-        # Get all orders for this seller
-        orders = Order.objects.filter(seller=seller_profile).order_by('-order_date')
+        orders = Order.objects.filter(buyer=seller_profile).order_by('-order_date')
 
-        # Serialize the orders data
         orders_data = []
         for order in orders:
-            product_data = {
-                'id': order.product.id,
-                'name': order.product.name,
-                'image': order.product.image.url if order.product.image else None,
-            }
+            # Get all items for this order
+            order_items = order.items.all()
+            items_data = []
+
+            for item in order_items:
+                item_data = {
+                    'product_name': item.product.name,
+                    'product_id': item.product.id,
+                    'quantity': item.quantity,
+                    'item_price': float(item.item_price)
+                }
+                items_data.append(item_data)
 
             order_data = {
                 'id': order.id,
-                'product': product_data,
-                'quantity': order.quantity,
+                'items': items_data,
                 'total_price': float(order.total_price),
                 'status': order.status,
                 'order_date': order.order_date,
@@ -498,7 +510,6 @@ class GetOrdersView(APIView):
                 'shipping_phone': order.shipping_phone,
                 'payment_method': order.payment_method
             }
-
             orders_data.append(order_data)
-        print(order_data)
+
         return Response(orders_data)

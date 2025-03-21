@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import RetailSellerProfile, Product, Order
+from .models import RetailSellerProfile, Product, Order, OrderItem
 
 @admin.register(RetailSellerProfile)
 class RetailSellerProfileAdmin(admin.ModelAdmin):
@@ -12,7 +12,13 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ("name", "normal_price", "retail_price")
     search_fields = ("name",)
 
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    extra = 1
+
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ("seller", "product", "quantity", "total_price", "status", "order_date")
-    list_filter = ("status",)
+    inlines = [OrderItemInline]
+    list_display = ["id", "buyer", "total_price", "status", "order_date"]
+    list_filter = ["status", "order_date"]
+

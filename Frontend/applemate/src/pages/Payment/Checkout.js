@@ -40,39 +40,34 @@ function Checkout() {
     }
   
     try {
-      // Process each item in the cart as a separate order
-      for (const item of cartItems) {
-        // Check what ID property is available on the item
-        console.log('Processing item:', item);
-        const productId =  item.id ; // Check correct property name
-
-        
-        if (!productId) {
-          console.error('No product ID found for item:', item);
-          continue; // Skip this item or handle appropriately
-        }
-  
-        const orderData = {
+      const orderData = {
+        cart_items: cartItems.map(item => ({
           product_id: item.id,
-          quantity: item.quantity,
-          shipping_name: shippingDetails.name,
-          shipping_address: shippingDetails.address,
-          shipping_phone: shippingDetails.phone,
-          payment_method: paymentMethod
-        };
+          quantity: item.quantity
+        })),
+        shipping_name: shippingDetails.name,
+        shipping_address: shippingDetails.address,
+        shipping_phone: shippingDetails.phone,
+        payment_method: paymentMethod
+      };
   
-        console.log('Sending order data:', orderData);
+      const response = await axios.post('/api/placeOrders/', orderData, {
+        headers: {
+          'X-CSRFToken': getCsrfToken(),
+          'Content-Type': 'application/json',
+          'Authorization': `Token ${localStorage.getItem('authToken')}`
+        }
+      });
   
-        const response = await axios.post('/api/orders/', orderData, {
-          headers: {
-            'X-CSRFToken': getCsrfToken(),
-            'Content-Type': 'application/json'
-          }
-        });
-        
-        console.log('Order response:', response.data);
-      }
-      
+      console.log('Order response:', response.data);
+  
+      // Clear the cart in localStorage after successful order placement
+      localStorage.removeItem('persistent_cart');
+  
+      // Dispatch a custom event to notify other components that cart has been cleared
+      const cartUpdateEvent = new CustomEvent('cartUpdated', { detail: [] });
+      window.dispatchEvent(cartUpdateEvent);
+  
       alert('Order Placed Successfully');
       navigate('/orders');
     } catch (error) {

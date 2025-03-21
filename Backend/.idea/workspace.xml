@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cd869956-0e23-4f08-869e-cb7541317a04" name="Changes" comment="" />
+    <list default="true" id="cd869956-0e23-4f08-869e-cb7541317a04" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applemate/AppleMate/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applemate/AppleMate/products/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/products/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applemate/AppleMate/retail/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/retail/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applemate/AppleMate/retail/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/retail/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applemate/AppleMate/retail/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/retail/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applemate/AppleMate/retail/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/retail/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applemate/AppleMate/retail/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/retail/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/10.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/10.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/11.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/11.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/2.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/3.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/4.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/5.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/7.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/7.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/9.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/9.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Payment/Checkout.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Payment/Checkout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Retail_page/orders/RtOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Retail_page/orders/RtOrders.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -36,6 +36,8 @@ class ProductSerializer(serializers.ModelSerializer):
 
 # ✅ Order Serializer
 class OrderSerializer(serializers.ModelSerializer):
+    buyer = RetailSellerProfileSerializer(read_only=True)
+
     class Meta:
         model = Order
         fields = '__all__'

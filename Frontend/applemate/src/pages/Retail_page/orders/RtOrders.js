@@ -4,7 +4,7 @@ import Navbar from '../../../components/Navbar';
 import RetailSidebar from '../../../components/RetailSidebar';
 import axios from 'axios';
 
-function RtOrders() {
+const RtOrders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -29,10 +29,11 @@ function RtOrders() {
     const fetchOrders = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('/api/orders/list/', {
+        const response = await axios.get('/api/ordersList/', {
           headers: {
             'X-CSRFToken': getCsrfToken(),
             'Content-Type': 'application/json'
+            
           }
         });
         console.log('API response:', response.data);
@@ -97,8 +98,7 @@ function RtOrders() {
                   <thead>
                     <tr>
                       <th>Order ID</th>
-                      <th>Product</th>
-                      <th>Quantity</th>
+                      <th>Products</th>
                       <th>Total Price</th>
                       <th>Order Date</th>
                       <th>Status</th>
@@ -110,9 +110,14 @@ function RtOrders() {
                     {orders.map(order => (
                       <tr key={order.id} className="order-row">
                         <td>#{order.id}</td>
-                        <td>{order.product.name}</td>
-                        <td>{order.quantity}</td>
-                        <td>₹{order.total_price}</td>
+                        <td>
+                          {order.items.map(item => (
+                            <div key={item.product_id}>
+                              {item.product_name} (x{item.quantity}) - ₹{item.item_price.toFixed(2)}
+                            </div>
+                          ))}
+                        </td>
+                        <td>₹{order.total_price.toFixed(2)}</td>
                         <td>{formatDate(order.order_date)}</td>
                         <td>
                           <span className={`status-badge ${order.status.toLowerCase()}`}>
