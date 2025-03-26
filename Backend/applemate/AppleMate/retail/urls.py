@@ -1,8 +1,8 @@
 from django.urls import path
 from .views import (
-    LoginView, RegisterView, AdminApproveRetailSellerView,
+    LoginView, RegisterView, AdminApproveRetailSellerView, sales_chart,
     ProductListView, PlaceOrderView, LogoutView, user_profile,
-    ChangePassword, CartView, GetOrdersView
+    ChangePassword, CartView, GetOrdersView, generate_retail_order_report
 )
 
 urlpatterns = [
@@ -16,4 +16,6 @@ urlpatterns = [
     path("changepwd/", ChangePassword, name="change-password"),
     path("orders/", CartView.as_view(), name="order_list"),
     path("ordersList/", GetOrdersView.as_view(), name="update_order_status"),
+    path("retail_report/",generate_retail_order_report, name="report_generation"),
+    path("admin/sales_chart/",sales_chart, name="sales_chart")
 ]

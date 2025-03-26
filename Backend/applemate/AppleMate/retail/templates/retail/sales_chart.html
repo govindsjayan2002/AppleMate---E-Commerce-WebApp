@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <h2>Top Selling Products</h2>
+    <canvas id="salesChart"></canvas>
+
+    <script>
+        var ctx = document.getElementById("salesChart").getContext("2d");
+        var salesChart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: {{ product_names|safe }},
+                datasets: [{
+                    label: "Units Sold",
+                    data: {{ product_quantities|safe }},
+                    backgroundColor: "skyblue",
+                    borderColor: "blue",
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

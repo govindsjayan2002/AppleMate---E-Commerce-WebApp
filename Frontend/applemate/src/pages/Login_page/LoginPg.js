@@ -135,7 +135,7 @@ function Login() {
             <div className='links'>
               <a href='/signup'>Don't have an account? Sign Up</a>
               <br />
-              <a href='/registration'>Register as Retailer/Wholesaler</a>
+              <a href='/retail_signup'>Register as Retailer/Wholesaler</a>
               <br />
               <a href='/forgot-password'>Forgot Password?</a>
             </div>

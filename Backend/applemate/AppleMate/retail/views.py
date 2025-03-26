@@ -9,12 +9,14 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 from django.contrib.auth.hashers import make_password,check_password
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
-import logging, json
+import logging, json, csv
 from django.middleware.csrf import get_token
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views import View
+from django.shortcuts import render
+from django.db.models import Sum
 
 
 logger = logging.getLogger(__name__)
@@ -513,3 +515,53 @@ class GetOrdersView(APIView):
             orders_data.append(order_data)
 
         return Response(orders_data)
+
+
+def generate_retail_order_report(request):
+    """Generates a CSV report for retail seller orders."""
+    filename = "retail_orders_report.csv"
+
+    # Create HTTP response with CSV content type
+    response = HttpResponse(content_type="text/csv")
+    response["Content-Disposition"] = f'attachment; filename="{filename}"'
+
+    # Create CSV writer
+    writer = csv.writer(response)
+    writer.writerow(["Order ID", "Buyer", "Product", "Quantity", "Item Price", "Total Price", "Order Date", "Status"])
+
+    # Fetch orders only for approved retail sellers
+    retail_sellers = RetailSellerProfile.objects.filter(is_approved=True)
+    orders = Order.objects.filter(buyer__in=retail_sellers).order_by("-order_date")
+
+    for order in orders:
+        order_items = OrderItem.objects.filter(order=order)  # Get all items for this order
+        for item in order_items:
+            writer.writerow([
+                order.id,
+                order.buyer.user.username,  # Get the username of the buyer
+                item.product.name,  # Get the product name from OrderItem
+                item.quantity,
+                item.item_price,
+                order.total_price,
+                order.order_date.strftime("%Y-%m-%d %H:%M:%S"),  # Format date
+                order.status
+            ])
+
+    return response
+
+def sales_chart(request):
+    # Fetch top-selling products
+    product_sales = (
+        OrderItem.objects.values("product__name")
+        .annotate(total_sold=Sum("quantity"))
+        .order_by("-total_sold")[:10]  # Get top 10 products
+    )
+
+    # Prepare data for Chart.js
+    product_names = [item["product__name"] for item in product_sales]
+    product_quantities = [item["total_sold"] for item in product_sales]
+
+    return render(request, "retail/sales_chart.html", {
+        "product_names": product_names,
+        "product_quantities": product_quantities,
+    })

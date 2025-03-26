@@ -169,9 +169,9 @@ function Products() {
                 {/* Conditional rendering for Add to Cart */}
                 {canAddToCart() && (
                   <div className="product-cart-actions">
-                    <div className="quantity-control">
+                    <div className="prdt-quantity-control">
                       <button
-                        className="quantity-btn"
+                        className="prdt-quantity-btn"
                         onClick={() => updateProductQuantity(product.id, -1)}
                         disabled={currentQuantity === 0}
                       >
@@ -179,7 +179,7 @@ function Products() {
                       </button>
                       <span className="quantity-display">{currentQuantity}</span>
                       <button
-                        className="quantity-btn"
+                        className="prdt-quantity-btn"
                         onClick={() => updateProductQuantity(product.id, 1)}
                       >
                         +

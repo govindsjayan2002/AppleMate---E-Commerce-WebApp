@@ -2,27 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd869956-0e23-4f08-869e-cb7541317a04" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/retail/templates/retail/sales_chart.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/templates/admin/retail/product/change_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applemate/AppleMate/AppleMate/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/AppleMate/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/applemate/AppleMate/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applemate/AppleMate/products/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/products/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/applemate/AppleMate/retail/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/retail/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applemate/AppleMate/retail/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/retail/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applemate/AppleMate/retail/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/retail/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/applemate/AppleMate/retail/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/retail/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/applemate/AppleMate/retail/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/retail/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/0.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/10.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/10.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/11.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/11.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/2.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/12.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/12.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/13.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/13.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/14.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/14.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/15.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/15.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/3.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/4.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/5.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/7.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/7.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/9.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/9.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/index.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Payment/Checkout.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Payment/Checkout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Retail_page/orders/RtOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Retail_page/orders/RtOrders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Login_page/LoginPg.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Login_page/LoginPg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Products_page/Products.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Products_page/Products.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Products_page/products.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Products_page/products.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +36,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -49,6 +53,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="D:/Research/Face-Object" />
@@ -56,6 +61,9 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Apple_Mate(project)\Backend\applemate\AppleMate\templates\admin\retail" />
+      <recent name="E:\Apple_Mate(project)\Backend\applemate\AppleMate\templates" />
+      <recent name="E:\Apple_Mate(project)\Backend\applemate\AppleMate\retail\templates\admin\product" />
       <recent name="E:\Apple_Mate(project)\Backend\applemate\AppleMate\media" />
     </key>
   </component>
@@ -69,5 +77,17 @@
       <updated>1735052004953</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
