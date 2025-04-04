@@ -27,62 +27,42 @@ class RegisterView(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
-        logger.debug(f"Received data: {request.data}")
+        try:
+            username = request.data.get("username")
+            email = request.data.get("email")
+            password = request.data.get("password")
+            store_name = request.data.get("store_name")
+            owner_name = request.data.get("owner_name")
+            phone_number = request.data.get("phone_number")
+            store_address = request.data.get("store_address")
 
-        user_type = request.data.get("user_type")
-        username = request.data.get("username")
-        email = request.data.get("email")
+            if not all([username, email, password, store_name, owner_name, phone_number, store_address]):
+                return JsonResponse({"error": "All fields are required."}, status=400)
 
-        if not user_type:
-            return Response({"error": "User type is required."}, status=status.HTTP_400_BAD_REQUEST)
+            if User.objects.filter(username=username).exists():
+                return JsonResponse({"error": "Username already exists."}, status=400)
 
-        if User.objects.filter(username=username).exists():
-            return Response({"error": "Username already exists."}, status=status.HTTP_400_BAD_REQUEST)
+            if User.objects.filter(email=email).exists():
+                return JsonResponse({"error": "Email already exists."}, status=400)
 
-        if User.objects.filter(email=email).exists():
-            return Response({"error": "Email already exists."}, status=status.HTTP_400_BAD_REQUEST)
-
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
             # Create user and hash password
-            password = serializer.validated_data.pop("password")
-            user = serializer.save(password=make_password(password))  # Hash password before saving
+            user = User.objects.create_user(username=username, email=email, password=password)
 
-            if user_type == "retail_seller":
-                # Ensure all required fields exist
-                missing_fields = [
-                    field for field in ["store_name", "owner_name", "phone_number", "store_address"]
-                    if not request.data.get(field)
-                ]
-                if missing_fields:
-                    user.delete()  # Prevent orphaned users
-                    return Response({"error": f"Missing fields: {', '.join(missing_fields)}"},
-                                    status=status.HTTP_400_BAD_REQUEST)
+            # Create retail seller profile
+            RetailSellerProfile.objects.create(
+                user=user,
+                store_name=store_name,
+                owner_name=owner_name,
+                phone_number=phone_number,
+                store_address=store_address,
+                email=email,
+                is_approved=False
+            )
 
-                try:
-                    # Create the retail seller profile
-                    RetailSellerProfile.objects.create(
-                        user=user,
-                        store_name=request.data["store_name"],
-                        owner_name=request.data["owner_name"],
-                        phone_number=request.data["phone_number"],
-                        store_address=request.data["store_address"],
-                        email=user.email,
-                        is_approved=False
-                    )
-                    return Response({"message": "Retail seller registered. Awaiting admin approval."},
-                                    status=status.HTTP_201_CREATED)
-                except Exception as e:
-                    user.delete()  # Rollback user creation if profile fails
-                    logger.error(f"Error creating RetailSellerProfile: {str(e)}")
-                    return Response({"error": f"Failed to create profile: {str(e)}"},
-                                    status=status.HTTP_400_BAD_REQUEST)
+            return JsonResponse({"message": "Retail seller registered successfully. Awaiting admin approval."}, status=201)
 
-            return Response({"message": "User registered successfully. Awaiting admin approval."},
-                            status=status.HTTP_201_CREATED)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=400)
 
 # ✅ Admin Approves/Rjects Retail Sellers
 class AdminApproveRetailSellerView(APIView):

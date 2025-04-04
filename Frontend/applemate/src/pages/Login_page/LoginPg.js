@@ -42,9 +42,9 @@ function Login() {
 
     try {
       const csrftoken = getCookie('csrftoken');
-      
-      // Update the API endpoint to match your backend URL pattern
-      const response = await fetch('/api/login/', {
+
+      // Try retail login first
+      let response = await fetch('/api/login/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -57,17 +57,36 @@ function Login() {
         }),
       });
 
-      const data = await response.json();
+      let data = await response.json();
 
+      // If retail login fails, try wholesale login
       if (!response.ok) {
-        throw new Error(data.error || 'Login failed');
+        response = await fetch('/api/ws-login/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken,
+          },
+          credentials: 'include',
+          body: JSON.stringify({
+            username: username.trim(),
+            password: password.trim(),
+          }),
+        });
+
+        data = await response.json();
+
+        // Throw error if wholesale login also fails
+        if (!response.ok) {
+          throw new Error(data.error || 'Login failed');
+        }
       }
 
       // Use the auth context to handle login
       // Store the authentication token and user type
       login(data.token || 'token', data.user_type || data.role);
 
-      // Also store any additional user information if needed
+      // Store additional user information if needed
       localStorage.setItem('username', data.username);
 
       // Redirect user based on role/user_type
@@ -76,7 +95,7 @@ function Login() {
       } else if (data.user_type === 'retail_seller') {
         navigate('/profile');
       } else if (data.user_type === 'wholesale_dealer') {
-        navigate('/profile');
+        navigate('/Ws_profile');
       } else {
         navigate('/');
       }
@@ -86,7 +105,8 @@ function Login() {
     } finally {
       setLoading(false);
     }
-  };
+};
+
 
   return (
     <>
@@ -133,8 +153,6 @@ function Login() {
               </div>
             </form>
             <div className='links'>
-              <a href='/signup'>Don't have an account? Sign Up</a>
-              <br />
               <a href='/retail_signup'>Register as Retailer/Wholesaler</a>
               <br />
               <a href='/forgot-password'>Forgot Password?</a>

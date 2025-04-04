@@ -18,6 +18,9 @@ import Registration from './pages/SignUp_page/retail/Registration';
 import RetailMain from './pages/Retail_page/default/RetailMain';
 import { AuthProvider } from './AuthenticationContext';
 import Checkout from './pages/Payment/Checkout';
+import WsProfile from './pages/Wholesale_page/profile/WsProfile';
+import WsCart from './pages/Wholesale_page/cart/WsCart';
+import PaymentComponent from './components/PaymentComponent';
 
 
 
@@ -46,8 +49,14 @@ export default function App() {
         <Route path='/retail_signup' element={<Registration/>}/>
         <Route path='/dashboard' element={<RetailMain/>}/>
         <Route path='/checkout' element={<Checkout/>}/>
+        <Route path='/Ws_profile' element={<WsProfile/>}/>
+        <Route path='/WsCart' element={<WsCart/>}/>
+
       </Routes>
     </Router>
+    <div className="App">
+            {/* <PaymentComponent /> */}
+        </div>
     </FormDataContextProvider>
     </AuthProvider>
   );

@@ -58,7 +58,7 @@ function ChangePwd() {
             {error && <p className="error-msg">{error}</p>}
             {success && <p className="success-msg">{success}</p>}
 
-            <div className="form-group">
+            <div className="pwd-form-group">
               <label>New Password</label>
               <input
                 type="password"
@@ -69,7 +69,7 @@ function ChangePwd() {
               />
             </div>
 
-            <div className="form-group">
+            <div className="pwd-form-group">
               <label>Confirm Password</label>
               <input
                 type="password"

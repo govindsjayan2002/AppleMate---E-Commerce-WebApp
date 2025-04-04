@@ -109,7 +109,7 @@ const RtOrders = () => {
                   <tbody>
                     {orders.map(order => (
                       <tr key={order.id} className="order-row">
-                        <td>#{order.id}</td>
+                        <td>{order.id}</td>
                         <td>
                           {order.items.map(item => (
                             <div key={item.product_id}>

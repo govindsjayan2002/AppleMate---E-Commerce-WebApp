@@ -13,10 +13,10 @@ def download_retail_orders_report(modeladmin, request, queryset):
     response["Content-Disposition"] = f'attachment; filename="{filename}"'
 
     writer = csv.writer(response)
-    writer.writerow(["Order ID", "Buyer", "Product", "Quantity", "Item Price", "Total Price", "Order Date", "Status"])
+    writer.writerow(["Order ID", "Buyer", "Product", "Quantity", "Item Price", "Total Price", "Order Date", "Status","Payment Method"])
 
     for order in queryset:
-        for item in order.items.all():  # ✅ Corrected - use `order.items.all()` instead of `OrderItem.objects.filter(order=order)`
+        for item in order.items.all():
             writer.writerow([
                 order.id,
                 order.buyer.user.username,
@@ -25,7 +25,8 @@ def download_retail_orders_report(modeladmin, request, queryset):
                 item.item_price,
                 order.total_price,
                 order.order_date.strftime("%Y-%m-%d %H:%M:%S"),
-                order.status
+                order.status,
+                order.payment_method,
             ])
 
     return response
@@ -47,6 +48,7 @@ class ProductAdmin(admin.ModelAdmin):
             extra_context = {}
 
         # Add sales chart button
+
         extra_context["sales_chart_url"] = reverse("sales_chart")
         return super().changelist_view(request, extra_context=extra_context)
 
@@ -58,6 +60,11 @@ class OrderItemInline(admin.TabularInline):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     inlines = [OrderItemInline]
-    list_display = ["id", "buyer", "total_price", "status", "order_date"]
+    list_display = ["id", "buyer", "total_price", "status", "order_date","payment_method"]
     list_filter = ["status", "order_date"]
     actions = [download_retail_orders_report]
+
+class Media:
+    css = {
+        'all': ('retail/css/admin_custom.css',)
+    }

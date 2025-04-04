@@ -1,0 +1,29 @@
+.button-container {
+    margin-bottom: 15px;
+}
+
+.chart-button, .bill-button {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 5px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.chart-button:hover {
+    background-color: #45a049;
+}
+
+.bill-button {
+    background-color: #2196F3;
+}
+
+.bill-button:hover {
+    background-color: #0b7dda;
+}

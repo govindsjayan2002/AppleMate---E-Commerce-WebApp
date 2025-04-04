@@ -2,30 +2,120 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd869956-0e23-4f08-869e-cb7541317a04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/retail/templates/retail/sales_chart.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/templates/admin/retail/product/change_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/enquiries/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/enquiries/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/enquiries/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/enquiries/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/enquiries/migrations/0002_alter_enquiry_subject.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/enquiries/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/enquiries/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/enquiries/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/enquiries/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/enquiries/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/enquiries/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/media/product_images/Murukku.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/media/product_images/banana_chips.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/media/product_images/gilebi.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/media/product_images/kappa_chips.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/media/product_images/karaseva.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/media/product_images/kuzhalappam.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/media/product_images/maduraseva.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/media/product_images/nuts.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/media/product_images/pappada_boly.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/media/product_images/peanut_bar.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/media/product_images/peda.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/media/product_images/popcorn.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/media/product_images/white_mixture.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/products/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/products/migrations/0002_billing_billingitem.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/products/migrations/0003_billing_price_type_billing_product_billing_quantity_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/products/migrations/0004_remove_billing_price_type_remove_billing_product_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/products/templates/admin/products/billing/change_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/products/templates/admin/products/billing_changelist.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/products/templates/admin/products/create_bill.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/products/templates/admin/products/print_bill.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/retail/templates/admin/products/change_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/static/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/static/retail/css/admin_custom.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/templates/admin/create_bill.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/templates/admin/retail/product/view_bill.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/wholesale/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/wholesale/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/wholesale/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/wholesale/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/wholesale/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/wholesale/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/wholesale/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/wholesale/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/applemate/AppleMate/wholesale/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/applemate/AppleMate/AppleMate/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/AppleMate/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applemate/AppleMate/AppleMate/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/AppleMate/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/applemate/AppleMate/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applemate/AppleMate/products/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/products/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applemate/AppleMate/products/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/products/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applemate/AppleMate/products/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/products/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applemate/AppleMate/products/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/products/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/applemate/AppleMate/retail/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/retail/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applemate/AppleMate/retail/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/retail/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applemate/AppleMate/retail/templates/retail/sales_chart.html" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/retail/templates/retail/sales_chart.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/applemate/AppleMate/retail/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/retail/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applemate/AppleMate/templates/admin/retail/product/change_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/applemate/AppleMate/templates/admin/retail/product/change_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/1.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/10.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/10.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/11.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/11.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/12.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/12.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/13.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/13.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/14.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/14.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/15.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/15.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/16.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/16.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/17.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/17.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/18.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/18.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/19.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/19.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/2.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/20.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/20.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/21.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/21.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/22.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/22.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/23.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/23.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/24.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/24.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/25.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/25.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/26.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/26.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/27.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/27.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/28.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/28.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/29.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/29.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/3.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/30.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/30.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/31.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/31.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/32.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/32.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/4.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/5.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/6.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/6.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/7.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/7.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/8.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/8.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/9.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/9.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/index.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/About_page/About.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/About_page/About.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/About_page/about.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/About_page/about.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Home_page/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Home_page/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Home_page/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Home_page/home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Login_page/LoginPg.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Login_page/LoginPg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Payment/Checkout.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Payment/Checkout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Payment/checkout.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Payment/checkout.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Products_page/Products.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Products_page/Products.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Products_page/products.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Products_page/products.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Retail_page/cart/rt_cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Retail_page/cart/rt_cart.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Retail_page/changepwd/ChangePwd.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Retail_page/changepwd/ChangePwd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Retail_page/changepwd/chngpwd.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Retail_page/changepwd/chngpwd.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Retail_page/orders/RtOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Retail_page/orders/RtOrders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Retail_page/orders/rt_orders.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/Retail_page/orders/rt_orders.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/SignUp_page/retail/Registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/SignUp_page/retail/Registration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/applemate/src/pages/SignUp_page/retail/registration.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/applemate/src/pages/SignUp_page/retail/registration.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,24 +137,32 @@
     <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="2qfSC1er7tWqGG1ovUlrZ7Lmyi7" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="D:/Research/Face-Object" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/applemate/AppleMate/templates/admin/products" />
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Apple_Mate(project)\Backend\applemate\AppleMate\templates\admin\products" />
+      <recent name="E:\Apple_Mate(project)\Backend\applemate\AppleMate\products\templates\admin\products" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Apple_Mate(project)\Backend\applemate\AppleMate\templates\admin\retail" />
-      <recent name="E:\Apple_Mate(project)\Backend\applemate\AppleMate\templates" />
-      <recent name="E:\Apple_Mate(project)\Backend\applemate\AppleMate\retail\templates\admin\product" />
-      <recent name="E:\Apple_Mate(project)\Backend\applemate\AppleMate\media" />
+      <recent name="E:\Apple_Mate(project)\Backend\applemate\AppleMate\products\templates\admin\products\billing" />
+      <recent name="E:\Apple_Mate(project)\Backend\applemate\AppleMate\static\Images" />
+      <recent name="E:\Apple_Mate(project)\Backend\applemate\AppleMate\products\templates\admin\products" />
+      <recent name="E:\Apple_Mate(project)\Backend\applemate\AppleMate\templates\admin" />
+      <recent name="E:\Apple_Mate(project)\Backend\applemate\AppleMate\products\templates\admin" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -89,5 +187,8 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

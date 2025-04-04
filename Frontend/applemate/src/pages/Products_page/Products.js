@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useAuth } from "../../AuthenticationContext";
 import "./products.css";
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 // Consistent localStorage key
 const CART_STORAGE_KEY = 'persistent_cart';
@@ -11,7 +12,9 @@ function Products() {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [productQuantities, setProductQuantities] = useState({});
-  
+  const [currentPage, setCurrentPage] = useState(1); // Track the current page
+  const productsPerPage = 15; // Maximum products per page
+
   // Initialize cart from localStorage with robust error handling
   const [cart, setCart] = useState(() => {
     try {
@@ -122,6 +125,25 @@ function Products() {
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Pagination logic
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(prevPage => prevPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(prevPage => prevPage - 1);
+    }
+  };
+
   return (
     <>
       <div>
@@ -144,8 +166,8 @@ function Products() {
       </div>
       {/* Product List Section */}
       <div className="product-grid">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => {
+        {currentProducts.length > 0 ? (
+          currentProducts.map((product) => {
             // Get current quantity for this product
             const currentQuantity = productQuantities[product.id] || 0;
 
@@ -200,6 +222,20 @@ function Products() {
         ) : (
           <p>No products found.</p>
         )}
+      </div>
+      {/* Pagination Section */}
+      {totalPages > 1 && (
+        <div className="pagination">
+          <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+            Previous
+          </button>
+          <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+            Next
+          </button>
+        </div>
+      )}
+      <div className="prdct-footer">
+        <Footer />
       </div>
     </>
   );

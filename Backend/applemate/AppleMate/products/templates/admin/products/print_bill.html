@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice #{{ bill_number }}</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 32px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .company-info {
+            font-size: 14px;
+            color: #666;
+        }
+        .bill-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .bill-to {
+            width: 50%;
+        }
+        .bill-info {
+            width: 45%;
+            text-align: right;
+        }
+        .bill-info h3, .bill-to h3 {
+            margin-bottom: 5px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        table th {
+            background-color: #f2f2f2;
+        }
+        .total-row {
+            font-weight: bold;
+            background-color: #f9f9f9;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+        .print-button {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .print-button button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .print-button button:hover {
+            background-color: #45a049;
+        }
+        .signature {
+            margin-top: 60px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .signature-line {
+            width: 40%;
+            border-top: 1px solid #333;
+            padding-top: 5px;
+            text-align: center;
+        }
+        @media print {
+            .print-button {
+                display: none;
+            }
+            .container {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="{{ company_logo_url }}" alt="Company Logo">
+                {{ company_name }}
+            </div>
+            <div class="company-info">
+                {{ company_address }}<br>
+                Phone: {{ company_phone }} | Email: {{ company_email }}<br>
+                Website: {{ company_website }}
+            </div>
+        </div>
+
+        <div class="bill-details">
+            <div class="bill-to">
+                <h3>BILL TO</h3>
+                <p>
+                    Customer: Walk-in Customer<br>
+                    Date: {{ bill_date }}
+                </p>
+            </div>
+            <div class="bill-info">
+                <h3>INVOICE DETAILS</h3>
+                <p>
+                    Invoice Number: {{ bill_number }}<br>
+                    Date: {{ bill_date }}
+                </p>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in bill_items %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>₹{{ item.unit_price }}</td>
+                    <td>₹{{ item.total_price }}</td>
+                </tr>
+                {% endfor %}
+
+                <!-- Additional rows for tax, shipping, etc. could be added here -->
+                <tr class="total-row">
+                    <td colspan="4" style="text-align: right;">Total Amount:</td>
+                    <td>₹{{ bill.total_price }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="signature">
+            <div class="signature-line">
+                Customer Signature
+            </div>
+            <div class="signature-line">
+                Authorized Signature
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Thank you for your business!</p>
+            <p>This is a computer-generated invoice and does not require a physical signature.</p>
+        </div>
+
+        <div class="print-button">
+            <button onclick="window.print()">Print Invoice</button>
+        </div>
+    </div>
+</body>
+</html>

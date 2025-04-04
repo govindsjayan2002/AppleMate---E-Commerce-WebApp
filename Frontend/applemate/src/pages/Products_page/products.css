@@ -40,10 +40,39 @@
 
 /* Product Grid */
 .product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Exactly 5 cards per row */
+    gap: 10px; /* Space between cards */
+    margin: 30px auto; /* Center the grid horizontally */
+    width: 100%; /* Limit the grid width */
+    padding: 0 10px; /* Add padding to control spacing */
+}
+
+/* Pagination */
+.pagination {
     display: flex;
-    margin: 30px 50px;
-    gap: 10px;
-    border-radius: 8px; 
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.pagination button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+    background-color: #0056b3;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
 
 .search-btn{
@@ -55,7 +84,6 @@
     border-color: aqua;
     box-shadow: #555;
 }
-
 
 /* Product Card */
 .product-card {
@@ -97,10 +125,11 @@
 /* Product Cart Actions */
 .product-cart-actions {
     display: flex;
+    flex-direction: column; /* Stack elements vertically */
     align-items: center;
     justify-content: center;
     margin-top: 10px;
-    gap: 10px;
+    gap: 10px; /* Space between quantity control and add-to-cart button */
 }
 
 .prdt-quantity-control {
@@ -133,7 +162,7 @@
 }
 
 .add-to-cart-btn {
-    background-color: #28a745;
+    background-color: #19adc7;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -141,6 +170,7 @@
     cursor: pointer;
     font-size: medium;
     transition: background-color 0.3s ease;
+    width: 100%; /* Full width for the button */
 }
 
 .add-to-cart-btn:hover {
@@ -157,4 +187,9 @@
     .quantity-control, .add-to-cart-btn {
         width: 100%;
     }
+}
+
+.prdct-footer {
+    bottom: 0;
+    width: 100%;
 }

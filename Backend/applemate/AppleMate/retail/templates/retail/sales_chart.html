@@ -5,11 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales Chart</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .chart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 800px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        canvas {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+        }
+    </style>
 </head>
 <body>
 
     <h2>Top Selling Products</h2>
-    <canvas id="salesChart"></canvas>
+    <div class="chart-container">
+        <canvas id="salesChart"></canvas>
+    </div>
 
     <script>
         var ctx = document.getElementById("salesChart").getContext("2d");
@@ -20,15 +56,68 @@
                 datasets: [{
                     label: "Units Sold",
                     data: {{ product_quantities|safe }},
-                    backgroundColor: "skyblue",
-                    borderColor: "blue",
+                    backgroundColor: [
+                        "rgba(54, 162, 235, 0.6)",
+                        "rgba(255, 99, 132, 0.6)",
+                        "rgba(255, 206, 86, 0.6)",
+                        "rgba(75, 192, 192, 0.6)",
+                        "rgba(153, 102, 255, 0.6)"
+                    ],
+                    borderColor: [
+                        "rgba(54, 162, 235, 1)",
+                        "rgba(255, 99, 132, 1)",
+                        "rgba(255, 206, 86, 1)",
+                        "rgba(75, 192, 192, 1)",
+                        "rgba(153, 102, 255, 1)"
+                    ],
                     borderWidth: 1
                 }]
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 scales: {
-                    y: { beginAtZero: true }
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Units Sold',
+                            color: '#333',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Product Names',
+                            color: '#333',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            color: '#333',
+                            font: {
+                                size: 16
+                            }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0,0,0,0.7)',
+                        titleColor: '#fff',
+                        bodyColor: '#fff',
+                        borderWidth: 1,
+                        borderColor: '#333'
+                    }
                 }
             }
         });

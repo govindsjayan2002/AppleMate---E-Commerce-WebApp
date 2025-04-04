@@ -1,0 +1,49 @@
+{% extends "admin/create_bill.html" %}
+{% block content %}
+<h2>Generate Bill</h2>
+<form method="POST" action="{% url 'generate_bill' %}">
+    {% csrf_token %}
+    <label for="product">Product:</label>
+    <select name="product" required>
+        {% for product in products %}
+        <option value="{{ product.id }}">{{ product.name }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" name="quantity" min="1" required>
+
+    <label for="price_type">Price Type:</label>
+    <select name="price_type" required>
+        <option value="normal">Normal</option>
+        <option value="retail">Retail</option>
+        <option value="wholesale">Wholesale</option>
+    </select>
+
+    <button type="submit">Generate Bill</button>
+</form>
+
+<h2>Recent Bills</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price Type</th>
+        <th>Total Price</th>
+        <th>Date</th>
+    </tr>
+    {% for bill in bills %}
+    <tr>
+        <td>{{ bill.id }}</td>
+        <td>{{ bill.product.name }}</td>
+        <td>{{ bill.quantity }}</td>
+        <td>{{ bill.price_type }}</td>
+        <td>{{ bill.total_price }}</td>
+        <td>{{ bill.created_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<button onclick="window.print()">Print Bill</button>
+
+{% endblock %}

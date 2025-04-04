@@ -1,78 +1,161 @@
 /* General container styling */
-.registration_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f5f5f5;
+.registration-container {
+  display: flex;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f0f4f8, #d9e2ec); /* Soft gradient */
+}
+
+/* Left Section Styling */
+.left-section {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.side-image {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.overlay h1 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 3.5em;
+  margin-bottom: 10px;
+  color: #d9e2ec;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  -webkit-text-stroke: 0.15vw #6821e3;
+}
+
+.overlay p {
+  font-size: 1.2em;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* Right Section Styling */
+.right-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.registration-box {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+  animation: fadeIn 0.6s ease-in-out;
+  margin-top: 60px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Form Styling */
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.reg-form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 12px;
+}
+
+.input-group {
+  flex: 1;
+  margin-bottom: 12px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 2px;
+  font-weight: bold;
+  color: #333;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  width: 100%;
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Submit Button Styling */
+.reg-submit-button {
+  padding: 12px 20px;
+  background-color: #105daf;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: background-color 0.3s ease;
+}
+
+.reg-submit-button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+  .registration-container {
+    flex-direction: column;
   }
-  
-  /* Form box styling */
-  .registration_box {
-    background: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
-  }
-  
-  .registration_box h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  /* Input group styling */
-  .input_group {
-    margin-bottom: 15px;
-  }
-  
-  .input_group label {
-    display: block;
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  .input_group input,
-  .input_group select,
-  .input_group textarea {
+
+  .left-section,
+  .right-section {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
   }
-  
-  /* Styling for textarea */
-  .input_group textarea {
-    resize: none;
-    height: 60px;
+
+  .reg-form-row {
+    flex-direction: column;
   }
-  
-  /* Submit button styling */
-  .submit_button {
+
+  .input-group {
     width: 100%;
-    padding: 12px;
-    background-color: #28a745;
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
   }
-  
-  .submit_button:hover {
-    background-color: #218838;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 500px) {
-    .registration_box {
-      width: 90%;
-      padding: 20px;
-    }
-  }
-  
+}

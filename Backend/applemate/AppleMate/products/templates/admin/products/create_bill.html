@@ -1,0 +1,237 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}">
+  <style>
+    .item-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 15px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background-color: #f9fafb;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .item-row > div {
+      margin-right: 20px;
+      flex: 1;
+    }
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+    }
+    input[type="text"], select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    .add-row, .remove-row {
+      margin: 10px 0;
+      padding: 8px 12px;
+      background-color: #2563eb;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    .add-row:hover {
+      background-color: #1d4ed8;
+    }
+    .remove-row {
+      background-color: #dc2626;
+    }
+    .remove-row:hover {
+      background-color: #b91c1c;
+    }
+    .formset-container {
+      margin-bottom: 20px;
+    }
+    .submit-row input[type="submit"] {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4ade80;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    .submit-row input[type="submit"]:hover {
+      background-color: #22c55e;
+    }
+    .results {
+      margin-top: 20px;
+      background-color: #f1f1f1;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .results table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .results th, .results td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    .results th {
+      background-color: #4285f4;
+      color: #fff;
+    }
+    .results tr:hover {
+      background-color: #f5f5f5;
+    }
+  </style>
+{% endblock %}
+
+{% block extrahead %}
+  {{ block.super }}
+  <script type="text/javascript" src="{% static "admin/js/vendor/jquery/jquery.js" %}"></script>
+  <script type="text/javascript" src="{% static "admin/js/jquery.init.js" %}"></script>
+  <script type="text/javascript">
+    (function($) {
+        $(document).ready(function() {
+            // Management form prefix - this is what Django's formset uses
+            var prefix = "form";
+
+            // Add a new form
+            $('.add-row').click(function(e) {
+                e.preventDefault();
+                var formCount = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+                var row = $('.item-row:first').clone(true);
+
+                // Update form index
+                row.find(':input').each(function() {
+                    var name = $(this).attr('name');
+                    if (name) {
+                        name = name.replace('-0-', '-' + formCount + '-');
+                        var id = 'id_' + name;
+                        $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+                    }
+                });
+
+                // Insert new form
+                row.insertBefore('.add-row');
+
+                // Update form count
+                $('#id_' + prefix + '-TOTAL_FORMS').val(formCount + 1);
+            });
+
+            // Remove a form
+            $('.remove-row').click(function(e) {
+                e.preventDefault();
+                var formCount = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+
+                // Only remove if there's more than one form
+                if (formCount > 1) {
+                    $(this).closest('.item-row').remove();
+                    $('#id_' + prefix + '-TOTAL_FORMS').val(formCount - 1);
+
+                    // Renumber form indices
+                    $('.item-row').each(function(index) {
+                        $(this).find(':input').each(function() {
+                            var name = $(this).attr('name');
+                            if (name) {
+                                name = name.replace(/-\d+-/, '-' + index + '-');
+                                var id = 'id_' + name;
+                                $(this).attr({'name': name, 'id': id});
+                            }
+                        });
+                    });
+                }
+            });
+        });
+    })(django.jQuery);
+</script>
+{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+  <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+  &rsaquo; <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
+  &rsaquo; <a href="{% url 'admin:products_billing_changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+  &rsaquo; {% trans 'Generate Bill' %}
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    <h1>Generate Bill</h1>
+    <div class="module aligned">
+        <form method="POST" id="bill-items-form">
+            {% csrf_token %}
+            {{ formset.management_form }}
+
+            <div class="formset-container">
+                {% for form in formset %}
+                <div class="item-row">
+                    <div>
+                        <label for="{{ form.product.id_for_label }}">Product:</label>
+                        {{ form.product }}
+                        {{ form.product.errors }}
+                    </div>
+
+                    <div>
+                        <label for="{{ form.quantity.id_for_label }}">Quantity:</label>
+                        {{ form.quantity }}
+                        {{ form.quantity.errors }}
+                    </div>
+
+                    <div>
+                        <label for="{{ form.price_type.id_for_label }}">Price Type:</label>
+                        {{ form.price_type }}
+                        {{ form.price_type.errors }}
+                    </div>
+
+                    <div>
+                        <button type="button" class="remove-row">Remove</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <button type="button" class="add-row">Add Product</button>
+
+            <div class="submit-row">
+                <input type="submit" value="Generate Bill" class="default">
+            </div>
+        </form>
+    </div>
+
+    {% if bills %}
+    <h2>Recent Bills</h2>
+    <div class="results">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Total Price</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bill in bills %}
+                <tr class="{% cycle 'row1' 'row2' %}">
+                    <td>{{ bill.id }}</td>
+                    <td>₹{{ bill.total_price }}</td>
+                    <td>{{ bill.created_at }}</td>
+                    <td>
+                        <a href="{% url 'admin:products_billing_print' bill.id %}" target="_blank" class="button">Print</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

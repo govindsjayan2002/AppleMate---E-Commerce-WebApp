@@ -1,0 +1,99 @@
+/* General body styles */
+body {
+    margin: 0; /* Remove default body margins to ensure full width */
+    padding: 0;
+    font-family: 'Arial', sans-serif; /* A clean, readable font */
+  }
+  
+  /* Footer Container */
+  .footer {
+    background-color: #1c1c1c; /* Dark background for main footer */
+    color: #ffffff;
+    padding: 20px 40px;
+    width: 100%; /* Ensure full width */
+    margin-bottom: 0; /* Remove any bottom margins */
+  }
+  
+  .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%; /* Ensure full width */
+    max-width: 1200px; /* Maximum width to prevent stretching too far */
+    margin: 0 auto; /* Center the content */
+  }
+  
+  .footer-section {
+    flex: 1;
+    margin: 10px;
+  }
+  
+  .footer-logo {
+    width: 120px;
+  }
+  
+  .footer-address {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  /* Section Headings */
+  .footer-section h3 {
+    font-size: 18px; /* Slightly larger for emphasis */
+    margin-bottom: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern, clean font */
+    font-weight: bold; /* Make headings stand out */
+    color: #ffffff; /* Ensure headings are white */
+  }
+  
+  /* Links */
+  .footer-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 8px;
+  }
+  
+  .footer-section ul li a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .footer-section ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Social Media Links */
+  .social-links li {
+    display: flex;
+    align-items: center;
+  }
+  
+  .social-links li i {
+    font-size: 20px;
+    margin-right: 8px;
+  }
+  
+  /* Footer Bottom */
+  .footer-bottom {
+    background-color: #e63946; /* Matching red background for footer bottom */
+    color: #ffffff; /* White text for contrast */
+    text-align: center;
+    padding: 5px;
+    width: 100%;
+    margin: 0; /* Remove any margins */
+    box-sizing: border-box;
+  }
+  
+  
+  .footer-bottom a {
+    color: #ffffff; /* White links */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .footer-bottom a:hover {
+    text-decoration: underline; /* Hover effect for links */
+  }
+  
